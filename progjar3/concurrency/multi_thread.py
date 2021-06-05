@@ -3,9 +3,6 @@ import time
 import datetime
 import threading
 
-
-
-
 def download_semua():
     texec = dict()
     urls = get_url_list()
