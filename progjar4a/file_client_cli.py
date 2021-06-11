@@ -2,6 +2,13 @@ import socket
 import json
 import base64
 import logging
+import time
+
+"""
+Untuk melakukan request 100 get secara bersamaan,
+saya menggunakan multitreading dengan concurrent.futures
+"""
+import concurrent.futures
 
 server_address=('0.0.0.0',7777)
 
@@ -65,7 +72,22 @@ def remote_get(filename=""):
 
 
 if __name__=='__main__':
-    server_address=('0.0.0.0',6666)
-    remote_list()
-    #remote_get('donalbebek.jpg')
+    server_address=('192.168.122.214',6666)
+    # remote_list()
+    # remote_get('donalbebek.jpg')
+
+    listGet = []
+
+    # membuat 100 list
+    for _ in range(100):
+        listGet.append('donalbebek.jpg')
+
+    # menghitung waktu multithreading
+    t1 = time.perf_counter()
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(remote_get, listGet)
+    t2 = time.perf_counter()
+
+    print(f'Waktu proses sejumlah: {t2-t1}')
+    
 
