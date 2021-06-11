@@ -72,7 +72,7 @@ def remote_get(filename=""):
 
 
 if __name__=='__main__':
-    server_address=('192.168.122.214',6666)
+    server_address=('192.168.122.13',6666)
     # remote_list()
     # remote_get('donalbebek.jpg')
 
@@ -80,7 +80,7 @@ if __name__=='__main__':
 
     # membuat 100 list
     for _ in range(100):
-        listGet.append('donalbebek.jpg')
+        listGet.append('pokijan.jpg')
 
     # menghitung waktu multithreading
     t1 = time.perf_counter()
